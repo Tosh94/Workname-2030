@@ -1,0 +1,24 @@
+Projektziele v 0.0.1
+
+- Engine:
+	- funktionsfähige Schadensberechnung
+	
+- Pathfinding:
+	- festgelegter Laufweg (Rest später)
+	
+- Datenbank_
+	- Tabellen für Towertypen
+	- 	"		"  Creeptypen
+	- Loginspeicherung (?)
+	- Sicherung der Spielstände
+	
+- Datenbank kommunikation:
+	- Javaklasse für SQL Zugriff
+	
+- Kommunikation Flash - Java
+	- Protokoll? (https? Testweise andere Lösung finden, oder komplett neu?)
+	
+- Flash:
+	- Grafische Darstellung der Laufwege (Map)
+	- Grafische darstellung der Tower (ggf. ohne Animation)
+	
