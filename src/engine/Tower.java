@@ -141,14 +141,14 @@ public class Tower {
 	
 	public void attack(Creep[] listOfCreeps)
 	{
-		attack(decideWhichToAttack(findCreepsInRange(listOfCreeps)));
+		attack(listOfCreeps, decideWhichToAttack(findCreepsInRange(listOfCreeps, xpos, ypos, range)));
 	}
-	private Creep[] findCreepsInRange(Creep[] listOfCreeps)
+	private Creep[] findCreepsInRange(Creep[] listOfCreeps, int x, int y, int rng)
 	{
 		Creep[] creepsInRange=new Creep[0];
 		for(int i=0;i<listOfCreeps.length;i++)
 		{
-			if(calcDistance(listOfCreeps[i].getXpos(), listOfCreeps[i].getYpos(),xpos,ypos)<=range)
+			if(calcDistance(listOfCreeps[i].getXpos(), listOfCreeps[i].getYpos(),x,y)<=rng)
 			{
 				creepsInRange=(Creep[])(addToArray(creepsInRange, listOfCreeps[i]));
 			}
@@ -191,9 +191,16 @@ public class Tower {
 		}
 		return victim;
 	}
-	private void attack(Creep victim)
+	private void attack(Creep[] listOfCreeps, Creep victim)
 	{
 		victim.setLife(victim.getLife()-dmg);
+		victim.setFrz(frz);
+		victim.setPsn(psn);
+		Creep[] splashedCreeps=findCreepsInRange(listOfCreeps, victim.getXpos(), victim.getYpos(), splash);
+		for(int i=0;i<splashedCreeps.length;i++)
+		{
+			splashedCreeps[i].setLife(splashedCreeps[i].getLife()-(int)((1-(calcDistance(victim.getXpos(), victim.getYpos(), splashedCreeps[i].getXpos(), splashedCreeps[i].getYpos())/splash))*dmg));
+		}
 	}
 	private Object[] addToArray(Object[] array, Object obj)
 	{
