@@ -1,7 +1,8 @@
+
 Projektziele v 0.0.1
 
 - Engine:
-	- funktionsf�hige Schadensberechnung - erledigt
+	- funktionsfähige Schadensberechnung - erledigt
 	- Entscheidungsregel (Creep mit kürzestem Weg) - erledigt
 	
 - Pathfinding:
@@ -11,16 +12,17 @@ Projektziele v 0.0.1
 	- Ablauf in Ticks (20/sek)
 	
 - Datenbank_
-	- Tabellen f�r Towertypen
+	- Tabellen für Towertypen
 	- 	"		"  Creeptypen
 	- Loginspeicherung (?)
-	- Sicherung der Spielst�nde
+	- Sicherung der Spielstände
+	- Tabellen für Inhalt der Waves
 	
 - Datenbank kommunikation:
-	- Javaklasse f�r SQL Zugriff
+	- Javaklasse für SQL Zugriff
 	
 - Kommunikation Flash - Java
-	- Protokoll? (https? Testweise andere L�sung finden, oder komplett neu?)
+	- Protokoll? (https? Testweise andere Lösung finden, oder komplett neu?)
 	
 - Flash:
 	- Grafische Darstellung der Laufwege (Map)
