@@ -139,7 +139,7 @@ public class Tower {
 		this.range=range;
 	}
 	
-	public void attack(Creep[] listOfCreeps)
+	public void doAttack(Creep[] listOfCreeps)
 	{
 		attack(listOfCreeps, decideWhichToAttack(findCreepsInRange(listOfCreeps, xpos, ypos, range)));
 	}
