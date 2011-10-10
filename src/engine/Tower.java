@@ -269,37 +269,46 @@ public class Tower {
 
 	/**
 	 * Sets the tower큦 type큦 ID. Should usually be used for upgrading the tower.
+	 * Includes security query blocking wrong values.
 	 * @param towerID the tower큦 type큦 ID. Used as reference to the database.
 	 * @see #getTowerID()
 	 */
 	public void setTowerID(int towerID) {
+		if(towerID<0) {towerID=0;System.out.println("WARNING: towerID < 0");}
 		this.towerID = towerID;
 	}
 
 	/**
-	 * Sets the tower큦 owner큦 ID. Should usually only be changed in case of a plyer disconnecting in game mode 'Tower Wars'.
+	 * Sets the tower큦 owner큦 ID. Should usually only be changed in case of a player disconnecting in game mode 'Tower Wars'.
+	 * Includes security query blocking wrong values.
 	 * @param ownerID the tower큦 owner큦 ID. Used to specify which player 1-6 owns the tower.
 	 * @see #getOwnerID()
 	 */
 	public void setOwnerID(int ownerID) {
+		if(ownerID<1||ownerID>6) {ownerID=1; System.out.println("WARNING: non-existing ownerID");}
 		this.ownerID = ownerID;
 	}
 
 	/**
 	 * Sets the tower큦 maximum life. 
+	 * Includes security query blocking wrong values.
 	 * @param maxLife the tower큦 maximum life. Must be 1 or greater.
 	 * @see #getMaxLife() 
 	 */
 	public void setMaxLife(int maxLife) {
+		if(maxLife<1) {maxLife=1; System.out.println("WARNING: maxLife < 1");}
 		this.maxLife = maxLife;
 	}
 
 	/**
 	 * Sets the tower큦 actual life.
+	 * Includes security query blocking wrong values.
 	 * @param life the tower큦 actual life as integer. Must be between 0 and maxLife. In the actual state of the game this is not just according to creeps not being able to damage towers.
 	 * @see #getLife()
 	 */
 	public void setLife(int life) {
+		if(life<0){life=0; System.out.println("WARNING: life < 0");}
+		if(life>maxLife){life=maxLife; System.out.println("WARNING: life bigger than maxLife");}
 		this.life = life;
 	}
 
@@ -314,28 +323,34 @@ public class Tower {
 
 	/**
 	 * Sets the tower큦 splash range.
+	 * Includes security query blocking wrong values.
 	 * @param splash the range starting at the hit creep in which the tower deals splash damage. 0 if no splash damage, else greater than 0.
 	 * @see #getSplash()
 	 */
 	public void setSplash(int splash) {
+		if(splash<0){splash=0; System.out.println("WARNING: splash < 0");}
 		this.splash = splash;
 	}
 
 	/**
 	 * Sets the tower큦 poison strength.
+	 * Includes security query blocking wrong values.
 	 * @param psn the grade of the poison a creep is affected by if hit by this tower. 0 if no poison, else greater than 0.
 	 * @see #getPsn()
 	 */
 	public void setPsn(int psn) {
+		if(psn<0){psn=0;System.out.println("WARNING: psn < 0");}
 		this.psn = psn;
 	}
 
 	/**
 	 * Sets the tower큦 freeze strength.
+	 * Includes security query blocking wrong values.
 	 * @param frz the grade of the freeze effect a creep is affected by if hit by this tower. 0 if no freeze, else greater than 0.
 	 * @see #getFrz()
 	 */
 	public void setFrz(int frz) {
+		if(frz<0){frz=0;System.out.println("WARNING: frz < 0");}
 		this.frz = frz;
 	}
 
@@ -368,28 +383,35 @@ public class Tower {
 	
 	/**
 	 * Sets the tower큦 cooldown between two attacks.
+	 * Includes security query blocking wrong values.
 	 * @param cooldown the tower큦 cooldown between two attacks in ticks. Must be 1 or greater.
 	 * @see #getCooldown()
 	 */
 	public void setCooldown(int cooldown) {
+		if(cooldown<1){cooldown=1; System.out.println("WARNING: cooldown < 1");}
 		this.cooldown=cooldown;
 	}
 
 	/**
 	 * Sets the tower큦 actual cooldown until the next attack.
+	 * Includes security query blocking wrong values.
 	 * @param cooldownLeft the cooldown left to the next attack. Must be between 0 and cooldown.
 	 * @see #getCooldownLeft()
 	 */
 	public void setCooldownLeft(int cooldownLeft) {
+		if(cooldownLeft<0){cooldownLeft=0;System.out.println("WARNING: cooldownLeft < 0");}
+		if(cooldownLeft>cooldown){cooldownLeft=cooldown;System.out.println("WARNING: cooldownLeft < cooldown");}
 		this.cooldownLeft=cooldownLeft;
 	}
 	
 	/**
 	 * Sets the tower큦 shooting range.
+	 * Includes security query blocking wrong values.
 	 * @param range the tower큦 shooting range in pixels. Must be greater than 0. Should be greater than 1/2 grid-field, so the tower can attack anything.
 	 * @see #getRange()
 	 */
 	public void setRange(int range) {
+		if(range<0){range=0;System.out.println("WARNING: range < 0");}
 		this.range=range;
 	}
 	
