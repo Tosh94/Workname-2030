@@ -529,7 +529,7 @@ public class Tower {
 	}
 	
 	/**
-	 * Calculates the distance between two points P(x1,y1) and Q(x2,y2) using Pythagoras.
+	 * Calculates the distance between two points P(x1,y1) and Q(x2,y2) using Pythagoras´ theorem.
 	 * @param x1 the x-coordinate of P
 	 * @param y1 the y-coordinate of P
 	 * @param x2 the x-coordinate of Q
