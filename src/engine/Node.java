@@ -5,14 +5,20 @@ public class Node {
 	private int xpos, ypos;
 	private Node[] neighbours;
 	private double[] values;
-	public Node(int xpos, int ypos)
+	private boolean walkable;
+	public Node(int xpos, int ypos, boolean walkable)
 	{
 		this.xpos=xpos;
 		this.ypos=ypos;
+		this.walkable=walkable;
 	}
 	public int getXpos()
 	{
 		return xpos;
+	}
+	public boolean isWalkable()
+	{
+		return walkable;
 	}
 	public int getYpos()
 	{
@@ -51,6 +57,10 @@ public class Node {
 	{
 		this.ypos=ypos;
 	}
+	public void setIsWalkable(boolean walkable)
+	{
+		this.walkable=walkable;
+	}
 	public void setNeighbours(Node[] neighbours, double[] values)
 	{
 		this.neighbours=neighbours;
@@ -59,7 +69,7 @@ public class Node {
 	
 	public void addNeighbour(Node newNeighbour, double newValue)
 	{
-		if(!isNeighbour(newNeighbour))
+		if(!isNeighbour(newNeighbour)&&newNeighbour!=null)
 		{
 			Node[] newNeighbours=new Node[neighbours.length+1];
 			double[] newValues=new double[values.length+1];
@@ -76,7 +86,7 @@ public class Node {
 	}
 	public void removeNeighbour(Node removedNeighbour)
 	{
-		if(isNeighbour(removedNeighbour))
+		if(isNeighbour(removedNeighbour)&&removedNeighbour!=null)
 		{
 			int index=getIndex(removedNeighbour);
 			Node[] newNeighbours=new Node[neighbours.length-1];
@@ -98,11 +108,14 @@ public class Node {
 	public boolean isNeighbour(Node possibleNeighbour)
 	{
 		boolean inside=false;
-		for(int i=0;i<neighbours.length;i++)
+		if(possibleNeighbour!=null)
 		{
-			if(neighbours[i].equals(possibleNeighbour))
+			for(int i=0;i<neighbours.length;i++)
 			{
-				inside=true;
+				if(neighbours[i].equals(possibleNeighbour))
+				{
+					inside=true;
+				}
 			}
 		}
 		return inside;
