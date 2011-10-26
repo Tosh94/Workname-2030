@@ -125,4 +125,9 @@ public class Node {
 	{
 		return xpos==checkedNode.getXpos()&&ypos==checkedNode.getYpos();
 	}
+	
+	public void removeAllNeighbours()
+	{
+		setNeighbours(new Node[0], new double[0]);
+	}
 }
